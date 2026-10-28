@@ -1,0 +1,24 @@
+{
+  "name": "tripsync",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Group trip planning: shared availability calendar, date confirmation, booking links and document storage.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,web -c blue,green \"npm run dev -w @tripsync/server\" \"npm run dev -w @tripsync/web\"",
+    "build": "npm run build -w @tripsync/web",
+    "start": "npm run start -w @tripsync/server",
+    "test": "npm test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "typescript": "^5.6.3"
+  }
+}
